@@ -1,19 +1,33 @@
-spring:
-  cloud:
-    stream:
-      bindings:
-        temporalEvents:
-          binder: rabbit
+
+#the config value publish-schedule is a CRON expression
+#The pattern is a list of six single space-separated fields:
+#representing second, minute, hour, day, month, weekday.
+#Month and weekday names can be given as the first three letters of the English names.
+#https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/scheduling/support/CronSequenceGenerator.html
+
+cloud:
+  stream:
+    bindings:
+      temporalEvents:
+        binder: rabbit
+        contentType: application/json
 
 ---
 spring:
   profiles: local
-  rabbit:
-    host: localhost
-    port: 5672
-    username: 5672
-    password: 5672
+rabbit:
+  host: localhost
+  port: 5672
+  username: 5672
+  password: 5672
+schedule: 0 0/1 * * * * # publish ever minute starting at the top of the hour
 
 ---
 spring:
   profiles: cloud
+schedule: 0 0/15 * * * * # publish ever 15 minutes starting at the top of the hour
+rabbit:
+  host: localhost
+  port: 5672
+  username: 5672
+  password: 5672
