@@ -10,9 +10,7 @@ cloud:
     bindings:
       temporalEvents:
         binder: rabbit
-        contentType: application/json
-application:
-  name: temporalEventPublisher
+clusterName: clockCluster
 ---
 spring:
   profiles: local

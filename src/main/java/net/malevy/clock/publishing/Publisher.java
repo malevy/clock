@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import net.malevy.clock.time.TemporalEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
@@ -26,6 +27,7 @@ public class Publisher {
 
         Message<String> message = MessageBuilder
                 .withPayload(serializedValue)
+                .setHeader("contentType", MediaType.APPLICATION_JSON_VALUE)
                 .build();
 
         try {
