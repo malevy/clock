@@ -11,9 +11,6 @@ cloud:
       temporalEvents:
         binder: rabbit
 clusterName: clockCluster
----
-spring:
-  profiles: local
 rabbit:
   host: localhost
   port: 5672
