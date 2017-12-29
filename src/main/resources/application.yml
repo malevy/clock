@@ -11,7 +11,8 @@ cloud:
       temporalEvents:
         binder: rabbit
         contentType: application/json
-
+application:
+  name: temporalEventPublisher
 ---
 spring:
   profiles: local
@@ -31,3 +32,8 @@ rabbit:
   port: 5672
   username: 5672
   password: 5672
+
+---
+spring:
+  profiles: test
+schedule: 0 0/1 * * * * # publish ever minute starting at the top of the hour
