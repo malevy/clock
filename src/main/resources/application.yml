@@ -11,16 +11,6 @@ cloud:
       temporalEvents:
         binder: rabbit
 clusterName: clockCluster
-endpoints:
-  beans:
-    enabled: true
-    sensitive: false
-  env:
-    enabled: true
-    sensitive: false
-  configprops:
-    enabled: true
-    sensitive: false
 
 ---
 spring:
