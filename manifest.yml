@@ -1,0 +1,10 @@
+---
+applications:
+- name: clock-service
+  memory: 768M
+  path: ./target/clock-0.0.1-SNAPSHOT.jar
+  buildpack: java_buildpack
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+  services:
+  - rabbitmq

@@ -55,6 +55,12 @@
 			<version>3.9.1</version>
 		</dependency>
 
+		<!-- add support for running in CF using the profile 'cloud' -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-cloudfoundry-connector</artifactId>
+		</dependency>
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
