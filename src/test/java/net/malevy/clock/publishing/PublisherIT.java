@@ -24,8 +24,7 @@ import static org.junit.Assert.assertThat;
 @ActiveProfiles("test")
 @SpringBootTest(
         properties = {
-                "spring.cloud.stream.bindings.temporalEvents.binder=test",
-                "schedule=0 0 0 * * *"
+                "spring.cloud.stream.bindings.temporalEvents.binder=test"
         },
 
         // I really don't understand why I have to explicitly pull in the auto-config for the MessageCollector
