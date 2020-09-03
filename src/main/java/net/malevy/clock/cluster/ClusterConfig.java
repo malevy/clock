@@ -1,7 +1,8 @@
 package net.malevy.clock.cluster;
 
-import com.esotericsoftware.kryo.serializers.VersionFieldSerializer;
-import com.hazelcast.config.*;
+import com.hazelcast.config.Config;
+import com.hazelcast.config.GroupConfig;
+import com.hazelcast.config.cp.CPSubsystemConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import org.springframework.beans.factory.annotation.Value;
