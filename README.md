@@ -11,20 +11,22 @@ message.
 
 ### running locally
 the existing configuration assumes that you have an instance of RabbitMQ running locally
-and using the default port of 5672. 
+and using the default port of 5672. if you're using Docker
+
+`docker run -d --hostname local-rmq --name local-rmq -p 5672:5672 -p 15672:15672 rabbitmq:management`
 
 running a single instance of the service is as easy as 
-`mvn spring-boot:run`. this will start a single node cluster and connect to RabbitMQ as 
+`mvn spring-boot:run -Drun.profiles=local`. this will start a single node cluster and connect to RabbitMQ as 
 you would expect.
 
 if, however, you'd like to start a multi-node cluster while still running locally, do
 the following:
 
 1. `mvn clean package` will create a jar in the target folder
-2. start the first node with `java -Dspring.profiles.active=local -jar target/clock-0.0.1-SNAPSHOT.jar`
+2. start the first node with `java -Dspring.profiles.active=local -jar target/clock-0.1.0.jar`
 3. open another terminal window and start the second instance with the same command but 
 change the service port to something other than 8080. for example: 
-`java -Dspring.profiles.active=local -Dserver.port=8081 -jar target/clock-0.0.1-SNAPSHOT.jar` 
+`java -Dspring.profiles.active=local -Dserver.port=8081 -jar target/clock-0.1.0.jar` 
 
 you should see log information from Hazelcast that indicates a named *cloudCluster* 
 has been created and it contains two members. the first instance that you started 
