@@ -3,9 +3,8 @@ package net.malevy.clock.publishing;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import net.malevy.clock.ClockApplication;
 import net.malevy.clock.time.TemporalEvent;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.stream.test.binder.MessageCollector;
@@ -13,14 +12,12 @@ import org.springframework.cloud.stream.test.binder.MessageCollectorAutoConfigur
 import org.springframework.messaging.Message;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.time.LocalDateTime;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("test")
 @SpringBootTest(
         properties = {
@@ -41,7 +38,7 @@ public class PublisherIT {
 
     private Message<String> actualPublishedEvent;
 
-    @Before
+    @BeforeEach
     @SuppressWarnings("unchecked")
     public void whenAnEventIsPublished() throws JsonProcessingException {
         final TemporalEvent event = new TemporalEvent(LocalDateTime.of(2017, 12, 27, 17, 05));
